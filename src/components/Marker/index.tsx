@@ -1,10 +1,10 @@
 import * as S from './styles';
 
-interface IMarker {
+type IMarker = {
   title: string;
   lat: number;
   lng: number;
-}
+};
 
 const Marker = ({ title }: IMarker) => {
   return (

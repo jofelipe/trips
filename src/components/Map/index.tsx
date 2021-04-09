@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 
 import Marker from 'components/Marker';
 
-interface IPlace {
+type IPlace = {
   id: string;
   name: string;
   slug: string;
@@ -11,11 +11,11 @@ interface IPlace {
     latitude: number;
     longitude: number;
   };
-}
+};
 
-interface IMap {
+type IMap = {
   places?: IPlace[];
-}
+};
 
 const Map = ({ places }: IMap) => {
   const [mapOptions] = useState({
