@@ -17,4 +17,8 @@ export const Heading = styled.h1`
   margin-bottom: var(--medium);
 `;
 
-export const Body = styled.article``;
+export const Body = styled.article`
+  p {
+    margin-bottom: var(--large);
+  }
+`;

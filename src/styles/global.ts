@@ -40,6 +40,17 @@ const GlobalStyles = createGlobalStyle`
   a {
     color: var(--primary);
   }
+
+  @media (max-width: 767px) {
+    :root {
+      --large: 2.8rem;
+    }
+
+    p {
+      font-size: 1.8rem;
+      line-height: var(--large);
+    }
+  }
 `;
 
 export default GlobalStyles;

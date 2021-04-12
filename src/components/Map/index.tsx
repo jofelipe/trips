@@ -95,7 +95,38 @@ const Map = ({ places }: IMap) => {
         elementType: 'geometry',
         stylers: [{ color: '#000000' }, { lightness: 17 }]
       }
-    ]
+    ],
+    restriction: {
+      latLngBounds: { north: 83.8, south: -57, west: -180, east: 180 }
+    }
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getMapBounds = (map: any, maps: any, places: IPlace[]) => {
+    const bounds = new maps.LatLngBounds();
+
+    places.forEach((place) => {
+      bounds.extend(
+        new maps.LatLng(place.location.latitude, place.location.longitude)
+      );
+    });
+    return bounds;
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const bindResizeListener = (map: any, maps: any, bounds: any) => {
+    maps.event.addDomListenerOnce(map, 'idle', () => {
+      maps.event.addDomListener(window, 'resize', () => {
+        map.fitBounds(bounds);
+      });
+    });
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const apiIsLoaded = (map: any, maps: any, places: any) => {
+    const bounds = getMapBounds(map, maps, places);
+    map.fitBounds(bounds);
+    bindResizeListener(map, maps, bounds);
   };
 
   return (
@@ -111,6 +142,8 @@ const Map = ({ places }: IMap) => {
       }}
       zoom={mapOptions.zoom}
       options={googleMapApiOptions}
+      yesIWantToUseGoogleMapApiInternals
+      onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)}
     >
       {places?.map(({ id, name, location, slug, bucketlist }) => (
         <Marker

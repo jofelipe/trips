@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import LinkWrapper from 'components/LinkWrapper';
 
+import { useRouter } from 'next/dist/client/router';
+import { NextSeo } from 'next-seo';
+
 import { XCircleIcon } from '@primer/octicons-react';
 
 import * as S from './styles';
-import { useRouter } from 'next/dist/client/router';
 
 type IImage = {
   url: string;
@@ -18,6 +20,7 @@ export type IPlaceTemplate = {
     name: string;
     description?: {
       html: string;
+      text: string;
     };
     gallery: IImage[];
     bucketlist: boolean;
@@ -37,6 +40,25 @@ export default function PlaceTemplate({ place }: IPlaceTemplate) {
 
   return (
     <>
+      <NextSeo
+        title={`${place.name} - Trips - Jonathan Felipe`}
+        description={place.description?.text}
+        canonical="https://trips.jofelipe.com/"
+        openGraph={{
+          url: 'https://trips.jofelipe.com/',
+          title: `${place.name} - Trips - Jonathan Felipe`,
+          description: place.description?.text,
+          images: [
+            {
+              url: place.gallery[0].url,
+              width: place.gallery[0].width,
+              height: place.gallery[0].height,
+              alt: place.name
+            }
+          ]
+        }}
+      />
+
       <LinkWrapper href="/">
         <XCircleIcon size={32} aria-label="Voltar para o mapa" />
       </LinkWrapper>

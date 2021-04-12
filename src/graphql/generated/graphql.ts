@@ -2890,7 +2890,7 @@ export type GetPlacesQuery = (
   { __typename?: 'Query' }
   & { places: Array<(
     { __typename?: 'Place' }
-    & Pick<Place, 'id' | 'slug' | 'name'>
+    & Pick<Place, 'id' | 'slug' | 'name' | 'bucketlist'>
     & { location: (
       { __typename?: 'Location' }
       & Pick<Location, 'latitude' | 'longitude'>
@@ -2913,13 +2913,13 @@ export type GetPlaceBySlugQuery = (
   { __typename?: 'Query' }
   & { place?: Maybe<(
     { __typename?: 'Place' }
-    & Pick<Place, 'id' | 'slug' | 'name'>
+    & Pick<Place, 'id' | 'slug' | 'name' | 'bucketlist'>
     & { location: (
       { __typename?: 'Location' }
       & Pick<Location, 'latitude' | 'longitude'>
     ), description?: Maybe<(
       { __typename?: 'RichText' }
-      & Pick<RichText, 'html'>
+      & Pick<RichText, 'html' | 'text'>
     )>, gallery: Array<(
       { __typename?: 'Asset' }
       & Pick<Asset, 'url' | 'width' | 'height'>
