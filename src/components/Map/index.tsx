@@ -7,13 +7,14 @@ type IPlace = {
   id: string;
   name: string;
   slug: string;
+  bucketlist: boolean;
   location: {
     latitude: number;
     longitude: number;
   };
 };
 
-type IMap = {
+export type IMap = {
   places?: IPlace[];
 };
 
@@ -111,12 +112,14 @@ const Map = ({ places }: IMap) => {
       zoom={mapOptions.zoom}
       options={googleMapApiOptions}
     >
-      {places?.map(({ id, name, location }) => (
+      {places?.map(({ id, name, location, slug, bucketlist }) => (
         <Marker
           key={id}
           title={name}
           lat={location.latitude}
           lng={location.longitude}
+          slug={slug}
+          bucketlist={bucketlist}
         />
       ))}
     </GoogleMapReact>
