@@ -75,8 +75,8 @@ export default function PlaceTemplate({ place }: IPlaceTemplate) {
                 key={index}
                 src={image.url}
                 alt={place.name}
-                width={1000}
-                height={600}
+                width={image.width}
+                height={image.height}
                 quality={75}
               />
             ))}

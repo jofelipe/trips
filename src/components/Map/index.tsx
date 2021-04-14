@@ -105,11 +105,13 @@ const Map = ({ places }: IMap) => {
   const getMapBounds = (map: any, maps: any, places: IPlace[]) => {
     const bounds = new maps.LatLngBounds();
 
-    places.forEach((place) => {
-      bounds.extend(
-        new maps.LatLng(place.location.latitude, place.location.longitude)
-      );
-    });
+    places
+      .filter((place) => !place.bucketlist)
+      .forEach((place) => {
+        bounds.extend(
+          new maps.LatLng(place.location.latitude, place.location.longitude)
+        );
+      });
     return bounds;
   };
 
@@ -136,10 +138,6 @@ const Map = ({ places }: IMap) => {
       }}
       defaultCenter={mapOptions.center}
       defaultZoom={mapOptions.zoom}
-      center={{
-        lat: mapOptions.center.lat,
-        lng: mapOptions.center.lng
-      }}
       zoom={mapOptions.zoom}
       options={googleMapApiOptions}
       yesIWantToUseGoogleMapApiInternals
