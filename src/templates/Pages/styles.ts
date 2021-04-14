@@ -9,6 +9,7 @@ export const Wrapper = styled.section`
   height: 100vh;
   max-width: var(--container);
   margin: auto;
+  padding: var(--large);
 `;
 
 export const Heading = styled.h1`
