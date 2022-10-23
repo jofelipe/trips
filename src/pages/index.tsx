@@ -13,9 +13,11 @@ export default function Home({ places }: IMap) {
 export const getStaticProps = async () => {
   const { places } = await client.request<GetPlacesQuery>(GET_PLACES);
 
+  const onlyVisitedPlaces = places.filter((place) => !place.bucketlist);
+
   return {
     props: {
-      places
+      places: onlyVisitedPlaces
     }
   };
 };

@@ -29,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     background: var(--background);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: 'Archivo', Arial, sans-serif
   }
 
   p {

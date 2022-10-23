@@ -55,6 +55,9 @@ export const GET_PLACE_BY_SLUG = gql`
       id
       slug
       name
+      date
+      liked
+      likedLeast
       location {
         latitude
         longitude

@@ -18,6 +18,9 @@ export type IPlaceTemplate = {
   place: {
     slug: string;
     name: string;
+    date: string;
+    liked: string;
+    likedLeast: string;
     description?: {
       html: string;
       text: string;
@@ -69,6 +72,21 @@ export default function PlaceTemplate({ place }: IPlaceTemplate) {
           <article
             dangerouslySetInnerHTML={{ __html: place.description?.html || '' }}
           />
+
+          <S.Info>
+            <ul>
+              <li>
+                <strong>Data da viagem:</strong> {place.date}
+              </li>
+              <li>
+                <strong>O que mais gostei:</strong> {place.liked}
+              </li>
+              <li>
+                <strong>O que menos gostei:</strong> {place.likedLeast}
+              </li>
+            </ul>
+          </S.Info>
+
           <S.Gallery>
             {place.gallery.map((image, index) => (
               <Image

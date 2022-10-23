@@ -20,6 +20,24 @@ export const Content = styled.section`
   }
 `;
 
+export const Info = styled.div`
+  background: #333;
+  margin-bottom: var(--large);
+  padding: var(--large);
+
+  ul {
+    li {
+      font-size: 1.6rem;
+      line-height: var(--medium);
+      list-style: none;
+
+      &:not(:last-child) {
+        margin-bottom: var(--small);
+      }
+    }
+  }
+`;
+
 export const Gallery = styled.div`
   display: grid;
   grid-gap: var(--medium);
